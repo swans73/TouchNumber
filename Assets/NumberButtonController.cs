@@ -4,27 +4,30 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class NumberButtonController : MonoBehaviour {
-    // ボタンのオブジェクトを宣言
-    public GameObject NumberButtonprefab;
-    // ボタンに設定する数値
+    public Text Text;
     public int Number;
-    // ボタンのサイズを設定
-    public int Width = 70;
-    public int Hight = 70;
-
+    public GameObject NumberButtonPrefab;
 	// Use this for initialization
 	void Start () {
-        // ボタンのサイズを変更
+        for (int i = 2; i < 10; i++)
+        {
+            GameObject gameobject = GameObject.Find("GameObject");
+            var instance = Instantiate(NumberButtonPrefab);
 
+            instance.transform.SetParent(gameobject.transform, false);
+            instance.GetComponent<NumberButtonController>().Number = i;
+
+            instance.name = "Button" + i;
+        }
+
+       
     }
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetMouseButtonDown(0))
-        {
-            Debug.Log(Number);
-            // クリックしたら消える
-            Destroy(this.gameObject);
-        }
+        GameObject Button1 = GameObject.Find("Button1");
+
+        Text.text = Number.ToString();
     }
-}
+  
+    }
