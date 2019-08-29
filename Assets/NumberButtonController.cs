@@ -4,30 +4,59 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class NumberButtonController : MonoBehaviour {
+
+    public int start = 1;
+    public int end = 10;
+
     public Text Text;
-    public int Number;
     public GameObject NumberButtonPrefab;
-	// Use this for initialization
-	void Start () {
-        for (int i = 2; i < 10; i++)
+
+    List<int> number = new List<int>();
+
+
+    // Use this for initialization
+    void Start()
+    {
+
+        for (int i = start; i < end; i++)
         {
-            GameObject gameobject = GameObject.Find("GameObject");
-            var instance = Instantiate(NumberButtonPrefab);
-
-            instance.transform.SetParent(gameobject.transform, false);
-            instance.GetComponent<NumberButtonController>().Number = i;
-
-            instance.name = "Button" + i;
+            //List内にnumberを格納
+            number.Add(i);
         }
 
-       
-    }
-	
-	// Update is called once per frame
-	void Update () {
-        GameObject Button1 = GameObject.Find("Button1");
+        //numberが0になるまで実行する
+        while (number.Count > 0)
+        {
 
-        Text.text = Number.ToString();
+            //Random.Rangeを宣言
+            int index = Random.Range(0, number.Count);
+            int ransu = number[index];
+
+
+
+            GameObject NBC = GameObject.Find("NumberButtonController");
+            var instance = Instantiate(NumberButtonPrefab);
+
+            //NumberButtonControllerにNumberButtonPrefabを格納
+            instance.transform.SetParent(NBC.transform, false);
+            //NumberButtonPrefabに値を表示
+            instance.GetComponent<NumberButtonController>().Text.text = ransu.ToString();
+
+            Debug.Log(ransu); 
+             //ボタンの名前を変更
+            instance.name = "Button" + ransu;
+            //Listからnumberを削除
+            number.RemoveAt(index);
+
+
+        }
+
     }
-  
+
+        // Update is called once per frame
+        void Update()
+        {
+
+        }
+
     }

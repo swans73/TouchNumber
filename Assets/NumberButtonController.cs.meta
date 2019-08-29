@@ -1,27 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-
-public class NumberButtonController : MonoBehaviour {
-    // ボタンに設定するテキストと数値
-    public string Text = "1";
-    public int Number = 1;
-    // ボタンのサイズを設定
-    public int width = 70;
-    public int high = 70;
-
-	// Use this for initialization
-	void Start () {
-        // ボタンのサイズを設定する
-        //this.GetComponent<RectTransform>().sizeDelta = new Vector2(this.width, this.high);
-        //this.GetComponent<Button>();
-        transform.GetComponent<OcclusionArea>().size = new Vector2(width, high);
-
-    }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-}
+fileFormatVersion: 2
+guid: e4fb6aac706ee487fbc68de4e7036249
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - Text: {instanceID: 0}
+  - NumberButtonPrefab: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
